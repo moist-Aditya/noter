@@ -13,7 +13,7 @@ const NoteCard = ({
 
   return (
     <div className="relative group/delete">
-      <Link href={`/notes/${note.id}`}>
+      <Link href={`/show-note/${note.id}`}>
         <div
           className={`border-t ${
             note.isHidden ? "border-red-600" : "border-slate-800"

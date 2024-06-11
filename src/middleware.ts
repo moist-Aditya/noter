@@ -11,9 +11,10 @@ export default auth((req) => {
     return Response.redirect(newUrl)
   }
   if (
-    (req.auth && req.nextUrl.pathname === "/sign-in") ||
-    req.nextUrl.pathname === "/sign-up" ||
-    req.nextUrl.pathname === "/"
+    req.auth &&
+    (req.nextUrl.pathname === "/sign-in" ||
+      req.nextUrl.pathname === "/sign-up" ||
+      req.nextUrl.pathname === "/")
   ) {
     const newUrl = new URL("/dashboard", req.nextUrl.origin)
     return Response.redirect(newUrl)

@@ -15,7 +15,7 @@ export default async function Home() {
 
       <div className="flex justify-center gap-14 items-center mt-7">
         <Link
-          href={"/api/auth/signin"}
+          href={"/sign-in"}
           className="bg-slate-200 text-black p-4 rounded-xl"
         >
           Login

@@ -1,13 +1,12 @@
 import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import Credentials from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import db from "../prisma/db"
 import { signInSchema } from "./schemas/signinSchema"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    CredentialsProvider({
-      name: "Credentials",
+    Credentials({
       credentials: {
         username: { label: "Username", type: "text", placeholder: "Putin001" },
         password: { label: "Password", type: "password" },
@@ -65,6 +64,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return token
     },
+  },
+  pages: {
+    signIn: "/sign-in",
   },
   session: {
     strategy: "jwt",
