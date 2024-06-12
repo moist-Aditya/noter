@@ -48,7 +48,7 @@ const Dashboard = async () => {
         <h1>Dashboard</h1>
         <p>
           Welcome,{" "}
-          <span className="text-accent-light font-bold animate-pulse text-2xl">
+          <span className="text-accent font-bold animate-pulse text-xl">
             {username}
           </span>
           .

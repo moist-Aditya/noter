@@ -12,51 +12,7 @@ const SignIn = () => {
             <h3>Welcome back! Login now to view your notes.</h3>
           </div>
 
-          {/* <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-4"
-            >
-              <div className="flex flex-col gap-1">
-                <label htmlFor="username" className="text-base font-light">
-                  Username
-                </label>
-                <input
-                  className="rounded-xl bg-transparent border border-slate-900 shadow-sm shadow-inherit p-2"
-                  type="text"
-                  placeholder="Putin001"
-                  {...register("username")}
-                />
-                {errors.username && (
-                  <p className="text-red-500 font-semibold">
-                    {errors.username.message}
-                  </p>
-                )}
-              </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="password" className="text-base font-light">
-                  Password
-                </label>
-                <input
-                  className="rounded-xl bg-transparent border border-slate-900 shadow-sm shadow-inherit p-2"
-                  type="password"
-                  placeholder="••••••••••"
-                  {...register("password")}
-                />
-                {errors.password && (
-                  <p className="text-red-500 font-semibold">
-                    {errors.password.message}
-                  </p>
-                )}
-              </div>
-              <div className="flex justify-center mt-7">
-                <button
-                  type="submit"
-                  className="p-4 px-6 font-semibold text-base rounded-xl bg-white text-black"
-                >
-                  Register
-                </button>
-              </div>
-            </form> */}
+          {/* Form */}
           <div>
             <SignInForm />
             <p className="text-right font-light text-sm">

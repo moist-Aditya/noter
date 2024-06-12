@@ -34,14 +34,25 @@ const SignInForm = () => {
     mode: "all",
   })
 
-  const initialState = {
-    message: "",
-  }
+  // const initialState = {
+  //   message: "",
+  // }
 
-  const [state, formAction] = useFormState(SignInSubmit, initialState)
+  // const [state, formAction] = useFormState(SignInSubmit, initialState)
 
   return (
-    <form action={formAction} className="flex flex-col gap-4 mt-7 pb-2">
+    <form
+      action={async (formData: FormData) => {
+        const result = await SignInSubmit(formData)
+
+        if (result?.error) {
+          toast.error(result.error)
+        } else {
+          toast.success("Login successfull")
+        }
+      }}
+      className="flex flex-col gap-4 mt-7 pb-2"
+    >
       <div className="flex flex-col gap-1 pb-7 relative">
         <label htmlFor="username" className="text-base font-light">
           Username
@@ -74,11 +85,11 @@ const SignInForm = () => {
         <SignInButton isValid={isValid} />
       </div>
 
-      {state?.message && (
+      {/* {state?.message && (
         <span className="absolute w-full text-center bottom-0 text-sm text-red-600">
           {state.message}
         </span>
-      )}
+      )} */}
     </form>
   )
 }

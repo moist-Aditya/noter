@@ -1,6 +1,7 @@
 "use server"
 
 import { signIn } from "@/auth"
+import { getErrorMessage } from "@/lib/utils/utils"
 import { AuthError } from "next-auth"
 import { redirect } from "next/navigation"
 
@@ -43,10 +44,7 @@ import { redirect } from "next/navigation"
 //   }
 // }
 
-export async function SignInSubmit(
-  currentState: { message: string },
-  data: FormData
-) {
+export async function SignInSubmit(data: FormData) {
   const form = {
     username: data.get("username"),
     password: data.get("password"),
@@ -58,9 +56,13 @@ export async function SignInSubmit(
       ...form,
     })
   } catch (error) {
-    //   console.error("Error in server action: ", error)
+    if (error instanceof AuthError) {
+      return {
+        error: "Incorrect username or password",
+      }
+    }
     return {
-      message: "Invalid Username or Password",
+      error: getErrorMessage(error),
     }
   }
   redirect("/")
