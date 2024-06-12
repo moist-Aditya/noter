@@ -50,6 +50,10 @@ body {
       @apply text-lg mt-2;
     }
   }
+
+  .btn-custom {
+    @apply p-2 rounded-lg bg-slate-200 hover:bg-white transition-all text-primary-dark font-semibold text-sm;
+  }
 }
 
 @layer utilities {

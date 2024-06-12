@@ -19,18 +19,6 @@ export async function POST(request: Request) {
   const userId = session.user.id
 
   try {
-    // const user = await db.user.findUnique({
-    //   where: { id: userId },
-    // })
-
-    // if (!user) {
-    //   const response: ApiResponse = {
-    //     success: false,
-    //     message: "User not found",
-    //   }
-    //   return Response.json(response, { status: 404 })
-    // }
-
     const newNote = await db.note.create({
       data: {
         title,

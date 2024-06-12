@@ -80,11 +80,9 @@ const CreateNode = () => {
             />
           </div>
 
-          {/* Add checkbox for isHidden */}
-
           <div className="form-field">
             <div className="flex items-center justify-between">
-              <label htmlFor="content">Title</label>
+              <label htmlFor="content">Content</label>
               {errors.content && (
                 <span className="text-red-600 text-sm text-right">
                   {errors.content.message}
@@ -110,7 +108,7 @@ const CreateNode = () => {
             />
           </div>
 
-          <button className="custom-btn" type="submit">
+          <button className="btn-custom" type="submit">
             Save
           </button>
         </form>

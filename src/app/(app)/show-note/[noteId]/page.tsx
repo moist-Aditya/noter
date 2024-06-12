@@ -1,9 +1,11 @@
 "use client"
 
+import { getErrorMessage } from "@/lib/utils/utils"
 import { ApiResponse } from "@/types/ApiResponse"
 import { Note } from "@prisma/client"
 import axios, { AxiosError } from "axios"
 import { Loader2, MoveLeft } from "lucide-react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
@@ -99,6 +101,31 @@ const ShowNote = ({ params }: { params: { noteId: string } }) => {
                 __html: formatContent(note.content),
               }}
             />
+            <div className="flex justify-between items-center mt-14">
+              <Link href={`/notes/edit-note/${note.id}`} className="btn-custom">
+                Edit
+              </Link>
+              <button
+                onClick={async () => {
+                  try {
+                    const result = await axios.delete<ApiResponse>(
+                      `/api/note-actions/${note.id}`
+                    )
+                    if (!result.data.success) {
+                      toast.error(result.data.message)
+                    } else {
+                      toast.success(result.data.message)
+                      router.replace("/notes")
+                    }
+                  } catch (error) {
+                    toast.error(getErrorMessage(error))
+                  }
+                }}
+                className="btn-custom bg-red-600 text-white hover:bg-red-400"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       ) : (
