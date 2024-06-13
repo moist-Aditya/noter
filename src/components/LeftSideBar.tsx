@@ -16,9 +16,8 @@ import { signOut } from "next-auth/react"
 const leftSideBarLinks = [
   { label: "Dashboard", href: "/dashboard", icon: <LayoutDashboard /> },
   { label: "All Notes", href: "/notes", icon: <NotebookText /> },
-  { label: "Tags", href: "/notes/tags", icon: <Tag /> },
   { label: "Create Note", href: "/notes/create", icon: <FilePlus /> },
-  { label: "Favorites", href: "/notes/favorites", icon: <Star /> },
+  // Group notes maybe?
 ]
 
 const LeftSideBar = () => {

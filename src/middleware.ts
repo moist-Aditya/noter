@@ -5,6 +5,7 @@ export default auth((req) => {
     !req.auth &&
     req.nextUrl.pathname !== "/sign-in" &&
     req.nextUrl.pathname !== "/sign-up" &&
+    !req.nextUrl.pathname.startsWith("/verify-user") &&
     req.nextUrl.pathname !== "/"
   ) {
     const newUrl = new URL("/", req.nextUrl.origin)

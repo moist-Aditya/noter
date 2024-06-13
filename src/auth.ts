@@ -20,32 +20,60 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           credentials
         )
 
-        try {
-          const user = await db.user.findUnique({
-            where: {
-              username,
-            },
-          })
+        const user = await db.user.findUnique({
+          where: {
+            username,
+          },
+        })
 
-          console.log("Found user from DB:", user)
-
-          if (!user) {
-            throw new Error("No user found with username")
-          }
-
-          const isPasswordCorrect = await bcrypt.compare(
-            password,
-            user.password
-          )
-
-          if (isPasswordCorrect) {
-            return user
-          } else {
-            throw new Error("Incorrect password")
-          }
-        } catch (error: any) {
-          throw new Error(error)
+        if (!user) {
+          throw new Error("No user found with username")
         }
+
+        if (!user.isVerified) {
+          throw new Error(
+            "User not verified. Please complete registration first."
+          )
+        }
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password)
+
+        if (isPasswordCorrect) {
+          return user
+        } else {
+          throw new Error("Incorrect password")
+        }
+
+        // try {
+        //   const user = await db.user.findUnique({
+        //     where: {
+        //       username,
+        //     },
+        //   })
+
+        //   if (!user) {
+        //     throw new Error("No user found with username")
+        //   }
+
+        //   if (!user.isVerified) {
+        //     throw new Error(
+        //       "User not verified. Please complete registration first."
+        //     )
+        //   }
+
+        //   const isPasswordCorrect = await bcrypt.compare(
+        //     password,
+        //     user.password
+        //   )
+
+        //   if (isPasswordCorrect) {
+        //     return user
+        //   } else {
+        //     throw new Error("Incorrect password")
+        //   }
+        // } catch (error: any) {
+        //   throw new Error(error)
+        // }
       },
     }),
   ],
