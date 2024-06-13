@@ -14,7 +14,7 @@ const SignInButton = ({ isValid }: { isValid: boolean }) => {
     <button
       disabled={!isValid || pending}
       type="submit"
-      className="p-2 w-full border border-slate-800 font-semibold text-base rounded-xl bg-primary-dark disabled:bg-transparent text-white disabled:text-slate-400"
+      className="p-2 w-full border border-slate-800 font-semibold text-base rounded-xl bg-primary shadow-sm shadow-accent-light disabled:shadow-slate-400 disabled:bg-transparent text-white disabled:text-slate-400"
     >
       Login
     </button>
@@ -51,14 +51,14 @@ const SignInForm = () => {
           toast.success("Login successfull")
         }
       }}
-      className="flex flex-col gap-4 mt-7 pb-2"
+      className="flex flex-col gap-2 mt-7 pb-2"
     >
       <div className="flex flex-col gap-1 pb-7 relative">
         <label htmlFor="username" className="text-base font-light">
           Username
         </label>
         <input
-          className="rounded-xl bg-transparent border border-slate-900 shadow-sm shadow-inherit p-2"
+          className="rounded-xl bg-transparent border border-slate-900 shadow-sm shadow-slate-800 p-2"
           type="text"
           placeholder="Putin001"
           {...register("username")}
@@ -72,7 +72,7 @@ const SignInForm = () => {
           Password
         </label>
         <input
-          className="rounded-xl bg-transparent border border-slate-900 shadow-sm shadow-inherit p-2"
+          className="rounded-xl bg-transparent border border-slate-900 shadow-sm shadow-slate-800 p-2"
           type="password"
           placeholder="••••••••••"
           {...register("password")}
