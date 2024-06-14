@@ -1,6 +1,6 @@
 "use server"
 
-import { auth, signIn } from "@/auth"
+import { auth, signIn, signOut } from "@/auth"
 import { getErrorMessage } from "@/lib/utils/utils"
 import { AuthError } from "next-auth"
 import { redirect } from "next/navigation"
@@ -173,6 +173,37 @@ export async function verifyUser(data: FormData) {
   }
 
   redirect("/sign-in")
+}
+
+export async function deleteUser(data: FormData) {
+  const session = await auth()
+
+  if (!session || !session.user) {
+    return {
+      error: "User not authenticated",
+    }
+  }
+
+  const username = session.user.username
+
+  try {
+    const result = await db.user.delete({
+      where: {
+        username,
+      },
+    })
+
+    if (!result) {
+      return {
+        error: "Could not delete account",
+      }
+    }
+  } catch (error) {
+    return {
+      error: getErrorMessage(error),
+    }
+  }
+  await signOut()
 }
 
 export async function getNote(noteId: string) {

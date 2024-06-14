@@ -7,6 +7,7 @@ import {
   NotebookText,
   Star,
   Tag,
+  User,
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -17,6 +18,7 @@ const leftSideBarLinks = [
   { label: "Dashboard", href: "/dashboard", icon: <LayoutDashboard /> },
   { label: "All Notes", href: "/notes", icon: <NotebookText /> },
   { label: "Create Note", href: "/notes/create", icon: <FilePlus /> },
+  { label: "Profile", href: "/profile", icon: <User /> },
   // Group notes maybe?
 ]
 

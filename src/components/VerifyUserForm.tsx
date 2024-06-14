@@ -3,7 +3,6 @@
 import { verifyUser } from "@/app/actions"
 import { verifyUserSchema } from "@/schemas/verifyUserSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect, useRef } from "react"
 import { useFormStatus } from "react-dom"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"

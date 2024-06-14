@@ -124,7 +124,7 @@ const Notes = () => {
                 />
               ))
             : !isLoading && (
-                <span className="text-base font-extralight text-center">
+                <span className="text-base font-extralight text-center col-span-full mt-14">
                   You haven't added any notes yet. Start by creating your first
                   note!
                 </span>
