@@ -141,7 +141,6 @@ export async function verifyUser(data: FormData) {
       }
     }
 
-    // TODO: check verify expiry date
     const isVerifyCodeExpired = new Date() > user.verifyCodeExpiry
 
     if (isVerifyCodeExpired) {
