@@ -24,6 +24,18 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+  transition-property: opacity, background, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+}
+
+.page-transition {
+  overflow: hidden;
+  opacity: 30%;
+  /* background: black; */
+  /* transform: translateX(20%); */
+  filter: blur(14px);
 }
 
 @layer components {

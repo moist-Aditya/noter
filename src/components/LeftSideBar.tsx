@@ -13,6 +13,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import SignOutLeftSideBar from "./SignOutLeftSideBar"
 import { signOut } from "next-auth/react"
+import TransitionLink from "./utils/TransitionLink"
 
 const leftSideBarLinks = [
   { label: "Dashboard", href: "/dashboard", icon: <LayoutDashboard /> },
@@ -32,7 +33,7 @@ const LeftSideBar = () => {
           {leftSideBarLinks.map((sideBarLink, index) => {
             const isActive = pathname === sideBarLink.href
             return (
-              <Link
+              <TransitionLink
                 href={sideBarLink.href}
                 key={index}
                 className={`${
@@ -43,7 +44,7 @@ const LeftSideBar = () => {
               >
                 <div className="">{sideBarLink.icon}</div>
                 <div className="max-md:hidden">{sideBarLink.label}</div>
-              </Link>
+              </TransitionLink>
             )
           })}
         </div>
